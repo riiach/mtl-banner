@@ -1,10 +1,10 @@
 export const images = [
     "/CardFace1.png",
-    "/CardFace2.png",
+    "/CardFace2.jpg",
     "/CardFace3.png",
 ];
 
 export const cards = Array.from({ length: 60 }, (_, index) => ({
     id: index,
     index,
-}))
+}));

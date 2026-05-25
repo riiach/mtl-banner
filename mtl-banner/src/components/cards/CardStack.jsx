@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import FlipCard from './FlipCard'
-import { cards, images } from './cards.data'
+import { useEffect, useState } from "react";
+import FlipCard from "./FlipCard";
+import { cards, images } from "./cards.data";
+
+const FLIP_SPEED = 250;
+const SET_DELAY = 2500;
 
 const CardStack = () => {
-    const [activeCard, setActiveCard] = useState(0);
+    const [activeCardIndex, setActiveCardIndex] = useState(-1);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setFaceIndex((prev) => (prev + 1) % images.length);
-        }, 4000);
+        const delay =
+            activeCardIndex === -1 ? SET_DELAY : FLIP_SPEED;
 
-        return () => clearInterval(interval);
-    }, []);
+        const timer = setTimeout(() => {
+            setActiveCardIndex((prev) => {
+                if (prev === -1) return 0;
+
+                if (prev >= cards.length - 1) {
+                    return -1;
+                }
+
+                return prev + 1;
+            });
+        }, delay);
+
+        return () => clearTimeout(timer);
+    }, [activeCardIndex]);
 
     return (
         <div className="w-full h-full flex flex-col gap-1 lg:flex-row">
@@ -21,10 +35,11 @@ const CardStack = () => {
                     index={card.index}
                     totalCards={cards.length}
                     images={images}
-                    isActive={activeCard === card.index}
+                    isActive={card.index === activeCardIndex}
                 />
             ))}
         </div>
-    )
-}
-export default CardStack
+    );
+};
+
+export default CardStack;
