@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import CardFace from './CardFace'
 
 const FlipCard = () => {
     const [faceIndex, setFaceIndex] = useState(0);
