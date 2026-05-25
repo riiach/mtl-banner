@@ -21,6 +21,7 @@ const CardStack = () => {
                     index={card.index}
                     totalCards={cards.length}
                     images={images}
+                    isActive={activeCard === card.index}
                 />
             ))}
         </div>

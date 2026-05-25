@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react'
 import CardFace from './CardFace'
 import { motion } from "framer-motion";
 
-const FlipCard = ( { index, totalCards, images }) => {
+const FlipCard = ( { index, totalCards, images, isActive }) => {
     const [faceIndex, setFaceIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
     const nextFace = () => {
         setFaceIndex((prevIndex) => (prevIndex + 1) % 3);
     };
+
+    useEffect(() => {
+        if (!isActive) return;
+
+        nextFace();
+    }, [isActive]);
 
     useEffect(() => {
         if (isHovered) return; // When hovered, don't automatically flip
