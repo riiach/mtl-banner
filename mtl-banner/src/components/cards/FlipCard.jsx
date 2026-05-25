@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CardFace from './CardFace'
 import { motion } from "motion/react"
 
-const FlipCard = () => {
+const FlipCard = ( { card }) => {
     const [faceIndex, setFaceIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
