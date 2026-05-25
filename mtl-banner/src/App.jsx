@@ -1,11 +1,11 @@
-import Container from './components/layout/Container'
+import Container from "./components/layout/Container";
 
 function App() {
-  return (
-    <div className="w-screen h-screen px-4 lg:px-12 py-4 lg:py-8">
-        <Container />
-    </div>
-  )
+    return (
+        <div className="relative w-screen h-screen overflow-hidden px-4 py-4 lg:px-12 lg:py-8 bg-white dark:bg-[#212121]">
+                <Container />
+        </div>
+    );
 }
 
-export default App
+export default App;

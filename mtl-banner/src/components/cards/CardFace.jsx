@@ -1,7 +1,7 @@
 const CardFace = ({ image, index, totalCards }) => {
     return (
         <div
-            className="w-full h-full bg-cover bg-no-repeat"
+            className="w-full h-full bg-no-repeat"
             style={{
                 backgroundImage: `url(${image})`,
                 backgroundSize: `${totalCards * 100}% 100%`,

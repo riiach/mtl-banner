@@ -2,32 +2,107 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CardFace from "./CardFace";
 
-const FlipCard = ({ index, totalCards, images, isActive }) => {
+const FLIP_DURATION = 450;
+
+const FlipCard = ({
+                      index,
+                      totalCards,
+                      images = [],
+                      isActive,
+                      targetFaceIndex,
+                      setTargetFaceIndex,
+                  }) => {
+
     const [faceIndex, setFaceIndex] = useState(0);
     const [rotation, setRotation] = useState(0);
+    const [hasHovered, setHasHovered] = useState(false);
 
-    useEffect(() => {
-        if (!isActive) return;
+    // Flip animation helper
+    const flipToFace = (
+        nextFaceIndex,
+        direction = "forward"
+    ) => {
 
-        setRotation(180);
+        const rotateValue =
+            direction === "forward"
+                ? 180
+                : -180;
 
-        const timer = setTimeout(() => {
-            setFaceIndex((prev) => (prev + 1) % images.length);
+        // Start rotation
+        setRotation(rotateValue);
+
+        // Halfway through flip:
+        // change image + reset rotation
+        setTimeout(() => {
+            setFaceIndex(nextFaceIndex);
             setRotation(0);
-        }, 225);
+        }, FLIP_DURATION / 2);
+    };
 
-        return () => clearTimeout(timer);
-    }, [isActive, images.length]);
+    // Automatic sequential flip
+    useEffect(() => {
+
+        if (!isActive) return;
+        if (!images.length) return;
+
+        // First card defines target state
+        if (index === 0) {
+
+            const nextFace =
+                (faceIndex + 1) % images.length;
+
+            setTargetFaceIndex(nextFace);
+
+            flipToFace(nextFace, "forward");
+
+            return;
+        }
+
+        // All other cards follow first card state
+        flipToFace(targetFaceIndex, "forward");
+
+    }, [isActive]);
+
+    // Hover reverse flip
+    const handleHoverStart = () => {
+
+        if (hasHovered) return;
+        if (!images.length) return;
+
+        setHasHovered(true);
+
+        const prevFace =
+            (faceIndex - 1 + images.length)
+            % images.length;
+
+        flipToFace(prevFace, "backward");
+    };
+
+    const handleHoverEnd = () => {
+        setHasHovered(false);
+    };
+
+    if (!images.length) return null;
 
     return (
         <motion.div
-            className="flex-1 overflow-hidden border border-red-500"
+            className="flex-1 overflow-hidden"
+
+            onMouseEnter={handleHoverStart}
+            onMouseLeave={handleHoverEnd}
+
             animate={{
-                rotateY: rotation,
+                rotateY: `${rotation}deg`,
             }}
+
             transition={{
-                duration: 0.45,
+                duration: FLIP_DURATION / 1000,
                 ease: "easeInOut",
+            }}
+
+            style={{
+                transformStyle: "preserve-3d",
+                backfaceVisibility: "hidden",
             }}
         >
             <CardFace
