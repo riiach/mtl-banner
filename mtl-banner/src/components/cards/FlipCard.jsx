@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardFace from './CardFace'
+import { motion } from "motion/react"
 
 const FlipCard = () => {
     const [faceIndex, setFaceIndex] = useState(0);
@@ -18,9 +19,22 @@ const FlipCard = () => {
     }, [isHovered]);
 
     return (
-        <div className="flex-1 border border-red-500">
-
-        </div>
+        <motion.div
+            className="flex-1 border border-red-500"
+            onHoverStart={() => {
+                setIsHovered(true);
+                nextFace();
+            }}
+            onHoverEnd={() => {
+                setIsHovered(false);
+            }}
+            animate={{
+                rotateY: faceIndex * 180,
+            }}
+            transition={{ duration: 0.5 }}
+        >
+            <CardFace data={card.faces[faceIndex]}/>
+        </motion.div>
     )
 }
 export default FlipCard
