@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import FlipCard from './FlipCard'
 import { cards, images } from './cards.data'
 
 const CardStack = () => {
+    const [activeCard, setActiveCard] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cards.length);
+        }, 80);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="w-full h-full flex flex-col gap-1 lg:flex-row">
             {cards.map((card) => (

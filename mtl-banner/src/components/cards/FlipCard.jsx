@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardFace from './CardFace'
-import { motion } from "motion/react"
+import { motion } from "framer-motion";
 
 const FlipCard = ( { index, totalCards, images }) => {
     const [faceIndex, setFaceIndex] = useState(0);
@@ -13,7 +13,7 @@ const FlipCard = ( { index, totalCards, images }) => {
     useEffect(() => {
         if (isHovered) return; // When hovered, don't automatically flip
 
-        const interval = setInterval(nextFace, 3000);
+        const interval = setInterval(nextFace, 8000);
 
         return () => clearInterval(interval);
     }, [isHovered]);

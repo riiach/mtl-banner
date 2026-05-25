@@ -1,5 +1,5 @@
 import React from 'react'
-import FlipCard from '../cards/FlipCard'
+import CardStack from '../cards/CardStack'
 
 const Container = () => {
     return (
@@ -7,7 +7,7 @@ const Container = () => {
             <h1 className="hidden font-mulish font-bold lg:text-4xl text-black md:block">
                 mtl
             </h1>
-            <FlipCard />
+            <CardStack />
         </div>
     )
 }
