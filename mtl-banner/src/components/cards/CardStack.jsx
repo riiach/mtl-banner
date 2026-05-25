@@ -26,11 +26,11 @@ const CardStack = () => {
     }, [activeCardIndex]);
 
     return (
-        <div className="w-full h-full flex flex-col gap-[2px] lg:flex-row
-         border-[#d9dde3] border-20
+        <div className="w-full h-full flex flex-col gap-[1px] lg:gap-[2px] lg:flex-row
+        border-20 border-[#d9dde3]
          bg-[linear-gradient(135deg,#2b2b2b_0%,#111_35%,#3a3a3a_50%,#111_70%,#2b2b2b_100%)]
          px-4
-         shadow-[inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.8),0_20px_60px_rgba(0,0,0,0.5)]
+         shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_2px_rgba(0,0,0,0.25),0_4px_18px_rgba(0,0,0,0.18)]
          ">
             {cards.map((card) => (
                 <FlipCard
