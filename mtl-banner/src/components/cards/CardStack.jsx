@@ -1,6 +1,6 @@
 import React from 'react'
 import FlipCard from './FlipCard'
-import { cards } from './cards.data'
+import { cards, images } from './cards.data'
 
 const CardStack = () => {
     return (
@@ -8,7 +8,9 @@ const CardStack = () => {
             {cards.map((card) => (
                 <FlipCard
                     key={card.id}
-                    card={card}
+                    index={card.index}
+                    totalCards={cards.length}
+                    images={images}
                 />
             ))}
         </div>

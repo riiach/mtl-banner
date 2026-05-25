@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CardFace from './CardFace'
 import { motion } from "motion/react"
 
-const FlipCard = ( { card }) => {
+const FlipCard = ( { index, totalCards, images }) => {
     const [faceIndex, setFaceIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -33,7 +33,11 @@ const FlipCard = ( { card }) => {
             }}
             transition={{ duration: 0.5 }}
         >
-            <CardFace data={card.faces[faceIndex]}/>
+            <CardFace
+                image={images[faceIndex]}
+                index={index}
+                totalCards={totalCards}
+            />
         </motion.div>
     )
 }

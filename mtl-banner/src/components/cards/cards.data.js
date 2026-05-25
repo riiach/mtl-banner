@@ -4,7 +4,7 @@ export const images = [
     "/CardFace3.png",
 ];
 
-export const cards = Array.from({ length: 60 }, (_, i) => ({
-    id: i,
-    i,
+export const cards = Array.from({ length: 60 }, (_, index) => ({
+    id: index,
+    index,
 }))
