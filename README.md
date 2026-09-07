@@ -1,3 +1,4 @@
+![mtl banner](./chrome_q1sjFBiujX.gif)
 # mtl-banner
 
 An automatic vertical-blind style image banner built with Framer Motion. A row of thin cards flips sequentially, split-flap-display style, to transition between images.
