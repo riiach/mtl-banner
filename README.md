@@ -1,4 +1,4 @@
-![mtl]](./IMG_6144.jpeg)
+![mtl](./IMG_6144.jpeg)
 ![mtl banner](./chrome_q1sjFBiujX.gif)
 # mtl-banner
 
