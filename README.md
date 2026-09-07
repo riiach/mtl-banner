@@ -80,3 +80,9 @@ Open [http://localhost:5173](http://localhost:5173) to see the result.
 ## Deployment
 
 Deploying via the [Vercel Platform](https://vercel.com/new) is recommended.
+
+## How I built this - Tech Blog
+
+Open [This Blog Post](https://riachoi-services.vercel.app/blog/cinematic-flip-card-interface-with-react-and-framer-motion) to see the detail.
+
+
